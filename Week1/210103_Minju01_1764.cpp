@@ -2,11 +2,11 @@
 #include <string>
 #include <vector>
 #include <string.h>
+#include <algorithm>
 
 using namespace std;
 
-string binsearch(vector<string> list, string key, int left, int right);
-void qsort(vector<string>& list, int start, int final);
+//void qsort(vector<string>& list, int start, int final);
 
 int main(void) {
 
@@ -24,40 +24,41 @@ int main(void) {
 	numOfSecondNames = stoi(numOfSecond);
 
 
-	vector<string> firstNames;	//vector of first Names
-	firstNames.clear();		//initializing
+	string * firstNames;	//vector of first Names
+	firstNames = new string [numOfFirstNames];
 	for (int i = 0; i < numOfFirstNames ; i++) {
 		getline(cin, stringBuffer, '\n');
-		firstNames.push_back(stringBuffer);
-		//cout << stringBuffer << " ";
+		firstNames[i] = stringBuffer;
 	}
 
 	
 
-	vector<string> secondNames;	//vector of second Names
-	secondNames.clear();	//initializing
+	string * secondNames;	//vector of second Names
+	secondNames = new string[numOfSecondNames];
 	for (int i = 0; i < numOfSecondNames; i++) {
 		getline(cin, stringBuffer, '\n');
-		secondNames.push_back(stringBuffer);
-		//cout << stringBuffer << " ";
+		secondNames[i] = stringBuffer;
 	}
 
 	//sort by dictionary
-	
-	qsort(firstNames, 0, numOfFirstNames-1);	//put index
-	qsort(secondNames, 0, numOfSecondNames-1);	//put index
-
+	sort(firstNames, firstNames + numOfFirstNames);
+	sort(secondNames, secondNames + numOfSecondNames);
 
 	vector<string> answers;		//vector of keys from binsearch (firstNames[i] == secondNames[i])
 	answers.clear();	//initializing
-	for (int i = 0; i < numOfFirstNames; i++) {
-		string answer;
-		answer = binsearch(secondNames, firstNames[i], 0, numOfSecondNames-1);	// index: 0 ~ (numOfSecondNames-1)
-		if (answer != "") {				//if the same word exist
-			answers.push_back(answer);	//push to answer (not sort yet)
+	int i = 0, j = 0;
+	while (i < numOfFirstNames && j < numOfSecondNames) {
+		if (firstNames[i] < secondNames[j]) {
+			i++;
+		}
+		else if (firstNames[i] > secondNames[j]) {
+			j++;
+		}
+		else {
+			answers.push_back(firstNames[i]);
+			i++, j++;
 		}
 	}
-	
 
 	//output
 	cout << answers.size() << endl;
@@ -83,6 +84,7 @@ int main(void) {
 	*/
 }
 
+/*
 string binsearch(vector<string> list, string key, int left, int right) {
 	int median;
 	while (left <= right) {
@@ -103,7 +105,7 @@ string binsearch(vector<string> list, string key, int left, int right) {
 	
 	return "";
 }
-/*
+
 void merge(vector<string>& list, int start, int final, int medium) {	// start index, final index, medium index
 	vector<string> ret;		//temp와 같은 기능
 	int i = start, j = medium + 1, copy = 0;
@@ -142,7 +144,6 @@ void mergeSort(vector<string>& list, int start, int final) {
 	}
 	
 }
-*/
 void qsort(vector<string>& list, int start, int final) {
 	string pivot = list[start];
 	int bs = start, be = final;
@@ -165,3 +166,5 @@ void qsort(vector<string>& list, int start, int final) {
 		qsort(list, start + 1, be);
 	}
 }
+
+*/
