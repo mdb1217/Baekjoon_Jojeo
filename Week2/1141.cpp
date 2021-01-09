@@ -13,10 +13,11 @@ bool comp(string a, string b) { //길이순 정렬
 
 int main() {
 	int n=0;
-	cin >> n;
-	vector <string> non_prefix;
 	string word;
 	int prefix=0;
+	vector <string> non_prefix;
+	
+	cin >> n;
 	
 	for(int i=0; i<n; i++){
 		cin >> word;
