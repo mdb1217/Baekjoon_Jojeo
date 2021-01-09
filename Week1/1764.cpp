@@ -4,42 +4,39 @@
 using namespace std;
 
 int main() {
-	vector <string> vl;
-	vector <string> vs;
-	int n, m=0;
+	int n, m;
+	string str;
+	vector <string> not_listen, not_seen, common;
+	
 	cin >> n >> m;
-	int count=0;
-	vector <string> vls;
-	string tmp;
 	
 	for(int i=0; i<n; i++) {
-		cin >> tmp;
-		vl.push_back(tmp);
-	}
-	for(int i=0; i<m; i++) {
-		cin >> tmp;
-		vs.push_back(tmp);
-	}
-	sort(vl.begin(), vl.end());
-	sort(vs.begin(), vs.end());
-	
-	int t=0;
-	for(int i=0; i<m; i++) {
-		if(t > n-1)
-			break;
-		if(vl[t] > vs[i]){
-			continue;
-		}
-		else if(vl[t] < vs[i]){
-			t++;
-		}else{
-			count++;
-			vls.push_back(vs[i]);
-			t++;
-		}
+		cin >> str;
+		not_listen.push_back(str);
 	}
 	
-	cout << count << endl;
-	for(int i=0; i<count; i++)
-		cout << vls[i] << endl;
+	for(int i=0; i<m; i++) {
+		cin >> str;
+		not_seen.push_back(str);
+	}
+	
+	sort(not_listen.begin(), not_listen.end());
+	sort(not_seen.begin(), not_seen.end());
+	
+	int i=0, j=0;
+	
+	while(i<n && j<m){
+		if(not_listen[i] < not_seen[j])
+			i++;
+		else if(not_listen[i] > not_seen[j])
+			j++;
+		else{
+			common.push_back(not_listen[i]);
+			i++; j++;
+		}
+	}
+	
+	cout << common.size() << endl;
+	for(int i=0; i<common.size(); i++)
+		cout << common[i] << endl;
 }
