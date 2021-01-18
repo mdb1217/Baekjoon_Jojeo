@@ -29,6 +29,10 @@ Edited by **mdb1217**:seedling:
 :green_apple: **2주차**
 > `1141접두사(실버2)`
 
+:green_apple: **3주차**
+> `1449수리공 항승(실버3)` `2258정육점(실버1)`
+
+
 - ## 멤버
 
 :heart:`문다빈`  :blue_heart:`강수현`  :green_heart:`조민주`  :purple_heart:`송수빈`
