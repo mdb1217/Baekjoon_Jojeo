@@ -38,6 +38,9 @@ Edited by **mdb1217**:seedling:
 :green_apple: **5주차**
 > `1260 DFS와 BFS(실버2)` `14496 그대, 그머가 되어(실버1)`
 
+:green_apple: **6주차**
+> `2583 영역 구하기(실버1)` `20162 간식파티(실버2)`
+
 - ## 멤버
 
 :heart:`문다빈`  :blue_heart:`강수현`  :green_heart:`조민주`  :purple_heart:`송수빈`
